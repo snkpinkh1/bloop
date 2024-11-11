@@ -57,7 +57,7 @@ class CustomInstallCommand(install):
 
 
 setup(
-    name="colorama",
+    name="pytest",
     version="1.1.3",
     description="11",
     author="Benny",
